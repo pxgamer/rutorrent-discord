@@ -1,41 +1,39 @@
 <?php
-require_once( 'discord.php' );
 
-if(isset($_REQUEST['cmd']))
-{
+require_once 'discord.php';
+
+if (isset($_REQUEST['cmd'])) {
     $cmd = $_REQUEST['cmd'];
-    switch($cmd)
-    {
-        case "set":
+    switch ($cmd) {
+        case 'set':
         {
             $up = Discord::load();
             $up->set();
-            cachedEcho($up->get(),"application/javascript");
+            cachedEcho($up->get(), 'application/javascript');
             break;
         }
-        case "get":
+        case 'get':
         {
             $up = rHistoryData::load();
-            cachedEcho(safe_json_encode($up->get($_REQUEST['mark'])),"application/json");
+            cachedEcho(safe_json_encode($up->get($_REQUEST['mark'])), 'application/json');
             break;
         }
-        case "delete":
+        case 'delete':
         {
             $up = rHistoryData::load();
-            $hashes = array();
-            if(!isset($HTTP_RAW_POST_DATA))
-                $HTTP_RAW_POST_DATA = file_get_contents("php://input");
-            if(isset($HTTP_RAW_POST_DATA))
-            {
+            $hashes = [];
+            if (! isset($HTTP_RAW_POST_DATA)) {
+                $HTTP_RAW_POST_DATA = file_get_contents('php://input');
+            }
+            if (isset($HTTP_RAW_POST_DATA)) {
                 $vars = explode('&', $HTTP_RAW_POST_DATA);
-                foreach($vars as $var)
-                {
-                    $parts = explode("=",$var);
+                foreach ($vars as $var) {
+                    $parts = explode('=', $var);
                     $hashes[] = $parts[1];
                 }
-                $up->delete( $hashes );
+                $up->delete($hashes);
             }
-            cachedEcho(safe_json_encode($up->get(0)),"application/json");
+            cachedEcho(safe_json_encode($up->get(0)), 'application/json');
             break;
         }
     }
