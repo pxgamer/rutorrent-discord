@@ -1,17 +1,13 @@
 <?php
 
-$discordNotifications = array
-(
-    "addition" =>
-        "**Torrent was added**\n".
+$discordNotifications = [
+    'addition' => "**Torrent was added**\n".
         "**Name**: {name}\n".
         "**Label**: {label}\n".
         "**Size**: {size}\n".
         "**Time**: {added}\n".
-        "**Tracker**: {tracker}"
-    ,
-    "deletion" =>
-        "**Torrent was deleted**\n".
+        '**Tracker**: {tracker}',
+    'deletion' => "**Torrent was deleted**\n".
         "**Name**: {name}\n".
         "**Label**: {label}\n".
         "**Size**: {size}\n".
@@ -21,10 +17,8 @@ $discordNotifications = array
         "**Creation**: {creation}\n".
         "**Added**: {added}\n".
         "**Finished**: {finished}\n".
-        "**Tracker**: {tracker}"
-    ,
-    "finish" =>
-        "**Torrent was finished**\n".
+        '**Tracker**: {tracker}',
+    'finish' => "**Torrent was finished**\n".
         "**Name**: {name}\n".
         "**Label**: {label}\n".
         "**Size**: {size}\n".
@@ -34,6 +28,5 @@ $discordNotifications = array
         "**Creation**: {creation}\n".
         "**Added**: {added}\n".
         "**Finished**: {finished}\n".
-        "**Tracker**: {tracker}"
-    ,
-);
+        '**Tracker**: {tracker}',
+];
